@@ -130,17 +130,11 @@
       padding: 8px;
       font-size: 16px;
     }
-    
-    iframe {
-      width: 100%;
-      height: 100vh;
-      border: none;
-      display: none;
-    } 
+
   </style>
 </head>
 <body>
-  <div class="container" id="formContainer">
+  <div class="container">
     <h1>Client details</h1>
     <div class="name-inputs">
       <input type="text" id="firstNameInput" placeholder="First name" value="Test" required>
@@ -150,7 +144,7 @@
     <input type="text" id="Email" placeholder="Email(optional)" required>
   </div>
 
-  <div class="container" id="formContainer">
+  <div class="container">
     <h1>Job type</h1>
     <select id="field1" required>
       <option value="">Выберите вариант</option>
@@ -167,7 +161,7 @@
     <textarea id="field3" placeholder="field3" required></textarea>
   </div>
 
-  <div class="container" id="formContainer">
+  <div class="container">
     <h1>Service location</h1>
     <div class="form-group">
       <input type="text" id="Address" placeholder="Address" required>
@@ -188,7 +182,7 @@
     </div>
   </div>
 
-  <div class="container" id="formContainer">
+  <div class="container">
     <h1>Scheduled</h1>
     <input type="date" id="scheduleDate" required>
     <div class="date-inputs">
@@ -207,8 +201,6 @@
     <button id="submitButton">Create Job</button>
     <button id="clearButton">Save info</button>
   </div>
-
-  <iframe id="nextIframe"></iframe>
 
   <script src="index.js"></script>
 </body>
