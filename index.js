@@ -1,9 +1,9 @@
 var adressInput = document.getElementById("Address");
 var warningBox = document.getElementById("warning-box");
 var submitButton = document.getElementById("submitButton");
-var formContainer = document.querySelector(".container"); // Находим контейнер формы
-var nextIframe = document.getElementById("nextIframe");
+var formContainer = document.querySelectorAll('.container'); // Используем querySelectorAll для получения всех контейнеров
 
+// Обработчик ввода для поля адреса
 adressInput.addEventListener("input", function() {
   if (adressInput.value === "") {
     warningBox.style.display = "block";
@@ -14,7 +14,8 @@ adressInput.addEventListener("input", function() {
   }
 });
 
-submitButton.addEventListener("click", function() {
+// Обработчик клика по кнопке отправки
+document.getElementById("submitButton").addEventListener("click", function() {
   if (adressInput.value === "") {
     adressInput.style.border = "2px solid red";
     warningBox.style.display = "block";
@@ -42,16 +43,20 @@ submitButton.addEventListener("click", function() {
       endTime: document.getElementById('EndTime').value,
       testSelect: document.getElementById('TestSelect').value
     };
-    
+
     parent.postMessage(inputInfo, '*');
 
-    // Скрываем контейнер формы и отображаем iframe
-    formContainer.style.display = 'none';
+    formContainer.forEach(function(container) {
+      container.style.display = 'none'; // Применяем изменения ко всем контейнерам
+    });
+
+    var nextIframe = document.getElementById('nextIframe');
     nextIframe.style.display = 'block';
     nextIframe.src = 'https://sukharevichdmitry.github.io/Third-site/';
   }
 });
 
+// Обработчик клика по кнопке очистки
 document.getElementById("clearButton").addEventListener("click", function() {
   var inputs = document.querySelectorAll("input, textarea, select");
   inputs.forEach(function(input) {
