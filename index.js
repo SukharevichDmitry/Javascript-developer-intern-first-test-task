@@ -44,7 +44,10 @@ var adressInput = document.getElementById("Address");
         
         parent.postMessage(inputInfo, '*');
 
-         window.location.href = 'https://next-website.com'; // Замените на нужный URL
+        
+        formContainer.style.display = 'none';
+        nextIframe.style.display = 'block';
+        nextIframe.src = 'https://next-website.com';
       }
     });
 
