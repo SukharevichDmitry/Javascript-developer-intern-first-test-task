@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NEW Create a job</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .name-inputs {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .name-inputs input {
+      width: 48%;
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      width: 90%;
+    }
+
+    textarea {
+      width: 90%;
+      font-size: 18px;
+      height: 6em;
+    }
+
+    #field1, #field2 {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+    }
+
+    .adress-inputs {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .adress-inputs input, .adress-inputs select {
+      width: 48%;
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    .adress-inputs select {
+      height: 50px;
+    }
+
+    #TestSelect {
+      width: 100%;
+      height: 80px;
+      font-size: 18px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 0 10px;
+    }   
+
+    .buttons button.error {
+      background-color: #ff0000;
+      color: white;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+
+    #warning-box {
+      position: absolute;
+      top: -20%;
+      right: 10px;
+      transform: translateY(-70%);
+      transform: translateX(50%);
+      background-color: #ff9800;
+      color: white;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 14px;
+      z-index: 9999;
+      display: none;
+    }
+
+    .date-inputs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .date-inputs input[type="time"] {
+      width: 48%;
+      padding: 8px;
+      font-size: 16px;
+    }
+
+    
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Client details</h1>
+    <div class="name-inputs">
+      <input type="text" id="firstNameInput" placeholder="First name" value="Test" required>
+      <input type="text" id="lastNameInput" placeholder="Last name" required>
+    </div>
+    <input type="text" id="Phone" placeholder="Phone" value="88005553535" required>
+    <input type="text" id="Email" placeholder="Email(optional)" required>
+  </div>
+
+  <div class="container">
+    <h1>Job type</h1>
+    <select id="field1" required>
+      <option value="">Выберите вариант</option>
+      <option value="option1">Вариант 1</option>
+      <option value="option2">Вариант 2</option>
+      <option value="option3">Вариант 3</option>
+    </select>
+    <select id="field2" required>
+      <option value="">Выберите вариант</option>
+      <option value="option1" selected>Вариант 1</option>
+      <option value="option2">Вариант 2</option>
+      <option value="option3">Вариант 3</option>
+    </select>
+    <textarea id="field3" placeholder="field3" required></textarea>
+  </div>
+
+  <div class="container">
+    <h1>Service location</h1>
+    <div class="form-group">
+        <input type="text" id="Address" placeholder="Address" required>
+        <div id="warning-box">
+          Внимание! Это важное поле.
+        </div>
+      </div>
+    <input type="text" id="City" placeholder="City" required>
+    <input type="text" id="State" placeholder="State" required>
+    <div class="adress-inputs">
+      <input type="text" id="ZipCode" placeholder="Zip code" required>
+      <select id="Area" required>
+        <option value="">Area</option>
+        <option value="option1" selected>Вариант 1</option>
+        <option value="option2">Вариант 2</option>
+        <option value="option3">Вариант 3</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>Scheduled</h1>
+    <input type="date" id="scheduleDate" required>
+    <div class="date-inputs">
+      <input type="time" id="Start Time" value="08:00">
+      <input type="time" id="End Time" value="08:00">
+    </div>
+    <select id="TestSelect" required>
+      <option value="">Test Select</option>
+      <option value="option1">Вариант 1</option>
+      <option value="option2">Вариант 2</option>
+      <option value="option3">Вариант 3</option>
+    </select>
+  </div>
+
+
+  <div class="buttons">
+    <button id="submitButton">Create Job</button>
+    <button id="clearButton">Save info</button>
+  </div>
+
+  <script>
+        var adressInput = document.getElementById("Address");
+        var warningBox = document.getElementById("warning-box");
+        var submitButton = document.getElementById("submitButton");
+
+        adressInput.addEventListener("input", function() {
+            if (adressInput.value === "") {
+                warningBox.style.display = "block";
+                adressInput.style.border = "2px solid red";
+            } else {
+                warningBox.style.display = "none";
+                adressInput.style.border = "1px solid #ccc";
+            }
+        });
+
+        document.getElementById("submitButton").addEventListener("click", function() {
+            if (adressInput.value === "") {
+                adressInput.style.border = "2px solid red";
+                warningBox.style.display = "block";
+                submitButton.classList.remove("error");
+            } else {
+                console.log("Форма отправлена");
+                submitButton.classList.add("error");
+                submitButton.textContent = 'Request is sent';
+            }
+        });
+
+        document.getElementById("clearButton").addEventListener("click", function() {
+            var inputs = document.querySelectorAll("input, textarea, select");
+            inputs.forEach(function(input) {
+                input.value = "";
+                input.style.border = "1px solid #ccc";
+            });
+            warningBox.style.display = "none";
+            submitButton.classList.remove("error");
+            submitButton.textContent = 'Create Job';
+        });
+
+
+  </script>
+</body>
+</html>
