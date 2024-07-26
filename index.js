@@ -45,14 +45,6 @@ document.getElementById("submitButton").addEventListener("click", function() {
     };
 
     parent.postMessage(inputInfo, '*');
-
-    formContainer.forEach(function(container) {
-      container.style.display = 'none'; // Применяем изменения ко всем контейнерам
-    });
-
-    var nextIframe = document.getElementById('nextIframe');
-    nextIframe.style.display = 'block';
-    nextIframe.src = 'https://sukharevichdmitry.github.io/Third-site/';
   }
 });
 
