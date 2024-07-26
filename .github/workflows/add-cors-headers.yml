@@ -1,0 +1,23 @@
+name: Add CORS Headers
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  add-cors-headers:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Add CORS Headers
+      run: |
+        echo "<IfModule mod_headers.c>
+              Header set Access-Control-Allow-Origin '*'
+            </IfModule>" > .htaccess
+    - name: Commit Changes
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Add CORS headers
