@@ -40,14 +40,13 @@ var adressInput = document.getElementById("Address");
           endTime: document.getElementById('EndTime').value,
           testSelect: document.getElementById('TestSelect').value
         };
-
         
         parent.postMessage(inputInfo, '*');
 
-        
         formContainer.style.display = 'none';
         nextIframe.style.display = 'block';
         nextIframe.src = 'https://sukharevichdmitry.github.io/Third-site/';
+          
       }
     });
 
