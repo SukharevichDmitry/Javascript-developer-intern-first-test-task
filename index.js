@@ -47,7 +47,6 @@ document.getElementById("submitButton").addEventListener("click", function() {
 
     parent.postMessage(inputInfo, '*');
 
-    window.location.href = 'https://sukharevichdmitry.github.io/Third-site/';
   }
 });
 
