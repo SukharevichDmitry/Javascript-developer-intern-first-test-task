@@ -7,79 +7,77 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
       box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .container-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 290px); 
+      grid-template-rows: repeat(2, 290px); 
+      gap: 20px; 
+      justify-content: center; 
+      align-content: start; 
+      box-sizing: border-box;
+      margin-bottom: 20px; 
     }
 
     .container {
       border: 1px solid #ccc;
-      padding: 20px;
+      padding: 10px;
       background-color: #f5f5f5;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      overflow-y: auto;
     }
 
-    .name-inputs {
+    .name-inputs,
+    .adress-inputs,
+    .date-inputs {
       display: flex;
       width: 100%;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
-    .name-inputs input {
-      width: 48%;
+    .name-inputs input,
+    .adress-inputs input,
+    .adress-inputs select,
+    .date-inputs input,
+    input,
+    select,
+    textarea {
       padding: 8px;
-      font-size: 16px;
-      margin-right: 10px;
-    }
-
-    input {
-      padding: 8px;
-      margin-bottom: 20px;
-      font-size: 16px;
-      width: 90%;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      width: 100%;
     }
 
     textarea {
-      width: 90%;
-      font-size: 18px;
-      height: 6em;
+      height: 60px;
     }
 
-    #field1, #field2 {
-      width: 100%;
-      height: 50px;
-      font-size: 18px;
-    }
-
-    .adress-inputs {
-      display: flex;
-      width: 100%;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .adress-inputs input, .adress-inputs select {
-      width: 48%;
-      padding: 8px;
-      font-size: 16px;
-      margin-right: 10px;
-    }
-
-    .adress-inputs select {
-      height: 50px;
-    }
-
-    #TestSelect {
-      width: 100%;
-      height: 80px;
-      font-size: 18px;
+    #field1, #field2, #TestSelect {
+      height: 40px;
     }
 
     .buttons {
@@ -89,10 +87,11 @@
     }
 
     .buttons button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 8px 16px;
+      font-size: 14px;
       margin: 0 10px;
-    }   
+      border-radius: 5px;
+    }
 
     .buttons button.error {
       background-color: #ff0000;
@@ -101,7 +100,7 @@
 
     .form-group {
       position: relative;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
 
     #warning-box {
@@ -109,97 +108,88 @@
       top: -20%;
       right: 10px;
       transform: translateY(-70%);
-      transform: translateX(50%);
+      transform: translateX(30%);
       background-color: #ff9800;
       color: white;
       padding: 5px;
       border-radius: 5px;
-      font-size: 14px;
+      font-size: 10px;
       z-index: 9999;
       display: none;
     }
-
-    .date-inputs {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-
-    .date-inputs input[type="time"] {
-      width: 48%;
-      padding: 8px;
-      font-size: 16px;
-    }
-
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Client details</h1>
-    <div class="name-inputs">
-      <input type="text" id="firstNameInput" placeholder="First name" value="Test" required>
-      <input type="text" id="lastNameInput" placeholder="Last name" required>
-    </div>
-    <input type="text" id="Phone" placeholder="Phone" value="88005553535" required>
-    <input type="text" id="Email" placeholder="Email(optional)" required>
-  </div>
+  <div class="main-container">
+    <div class="container-wrapper">
+      <div class="container">
+        <h1>Client details</h1>
+        <div class="name-inputs">
+          <input type="text" id="firstNameInput" placeholder="First name" value="Test" required>
+          <input type="text" id="lastNameInput" placeholder="Last name" required>
+        </div>
+        <input type="text" id="phone" placeholder="Phone" value="88005553535" required>
+        <input type="text" id="email" placeholder="Email(optional)" required>
+      </div>
 
-  <div class="container">
-    <h1>Job type</h1>
-    <select id="field1" required>
-      <option value="">Выберите вариант</option>
-      <option value="option1">Вариант 1</option>
-      <option value="option2">Вариант 2</option>
-      <option value="option3">Вариант 3</option>
-    </select>
-    <select id="field2" required>
-      <option value="">Выберите вариант</option>
-      <option value="option1" selected>Вариант 1</option>
-      <option value="option2">Вариант 2</option>
-      <option value="option3">Вариант 3</option>
-    </select>
-    <textarea id="field3" placeholder="field3" required></textarea>
-  </div>
+      <div class="container">
+        <h1>Job type</h1>
+        <select id="jobType" required>
+          <option value="">Select job type</option>
+          <option value="option1">Recall job</option>
+          <option value="option2">Another type</option>
+          <option value="option3">Another2 type</option>
+        </select>
+        <select id="jobArea" required>
+          <option value="">Choose area</option>
+          <option value="option1" selected>GL Pinellas</option>
+          <option value="option2">Another type</option>
+          <option value="option3">Another2 type</option>
+        </select>
+        <textarea id="jobDetails" placeholder="Comment" required></textarea>
+      </div>
 
-  <div class="container">
-    <h1>Service location</h1>
-    <div class="form-group">
-      <input type="text" id="Address" placeholder="Address" required>
-      <div id="warning-box">
-        Внимание! Это важное поле.
+      <div class="container">
+        <h1>Service location</h1>
+        <div class="form-group">
+          <input type="text" id="address" placeholder="Address" required>
+          <div id="warning-box">
+            Внимание! Это важное поле.
+          </div>
+        </div>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="state" placeholder="State" required>
+        <div class="adress-inputs">
+          <input type="text" id="zipCode" placeholder="Zip code" required>
+          <select id="area" required>
+            <option value="">Area</option>
+            <option value="option1" selected>Tampa</option>
+            <option value="option2">Houston</option>
+            <option value="option3">Austin</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1>Scheduled</h1>
+        <input type="date" id="scheduleDate" required>
+        <div class="date-inputs">
+          <input type="time" id="startTime" value="08:00">
+          <input type="time" id="endTime" value="08:00">
+        </div>
+        <select id="testSelect" required>
+          <option value="">Select technician</option>
+          <option value="option1">Tampa technician</option>
+          <option value="option2">Houston technician</option>
+          <option value="option3">Austin technician</option>
+        </select>
       </div>
     </div>
-    <input type="text" id="City" placeholder="City" required>
-    <input type="text" id="State" placeholder="State" required>
-    <div class="adress-inputs">
-      <input type="text" id="ZipCode" placeholder="Zip code" required>
-      <select id="Area" required>
-        <option value="">Area</option>
-        <option value="option1" selected>Вариант 1</option>
-        <option value="option2">Вариант 2</option>
-        <option value="option3">Вариант 3</option>
-      </select>
-    </div>
-  </div>
 
-  <div class="container">
-    <h1>Scheduled</h1>
-    <input type="date" id="scheduleDate" required>
-    <div class="date-inputs">
-      <input type="time" id="StartTime" value="08:00">
-      <input type="time" id="EndTime" value="08:00">
+    <div class="buttons">
+      <button id="submitButton">Create Job</button>
+      <button id="clearButton">Save info</button>
     </div>
-    <select id="TestSelect" required>
-      <option value="">Test Select</option>
-      <option value="option1">Вариант 1</option>
-      <option value="option2">Вариант 2</option>
-      <option value="option3">Вариант 3</option>
-    </select>
-  </div>
-
-  <div class="buttons">
-    <button id="submitButton">Create Job</button>
-    <button id="clearButton">Save info</button>
   </div>
 
   <script src="index.js"></script>
