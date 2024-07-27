@@ -12,6 +12,7 @@ adressInput.addEventListener("input", function() {
     warningBox.style.display = "none";
     adressInput.style.border = "1px solid #ccc";
   }
+
 });
 
 // Обработчик клика по кнопке отправки
@@ -45,6 +46,8 @@ document.getElementById("submitButton").addEventListener("click", function() {
     };
 
     parent.postMessage(inputInfo, '*');
+
+    window.location.href = 'https://sukharevichdmitry.github.io/Third-site/';
   }
 });
 
